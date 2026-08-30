@@ -8,19 +8,20 @@
 
 <style>
 
-/* =====================================================
-   FATHER XANDER — CREATIVE HOUSE
-===================================================== */
+/* =========================================================
+   FATHER XANDER CREATIVE SOLUTIONS
+   DIGITAL FLAGSHIP
+========================================================= */
 
 :root {
-  --black: #070707;
-  --dark: #0d0d0d;
-  --panel: #111111;
+  --black: #050505;
+  --dark: #0a0a0a;
+  --panel: #101010;
   --gold: #d4af37;
-  --gold-light: #e6ca69;
-  --white: #f5f3ed;
-  --muted: #929292;
-  --line: #292929;
+  --gold-soft: #ead27a;
+  --white: #f4f1e9;
+  --grey: #888;
+  --line: rgba(255,255,255,.12);
 }
 
 * {
@@ -37,8 +38,13 @@ body {
   background: var(--black);
   color: var(--white);
   font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.6;
   overflow-x: hidden;
+}
+
+body,
+a,
+button {
+  cursor: none;
 }
 
 a {
@@ -51,28 +57,144 @@ a {
 }
 
 
-/* =====================================================
+/* =========================================================
+   CUSTOM CURSOR
+========================================================= */
+
+.cursor {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: var(--gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition:
+    width .25s ease,
+    height .25s ease,
+    background .25s ease;
+}
+
+.cursor-ring {
+  position: fixed;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(212,175,55,.6);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition:
+    width .3s ease,
+    height .3s ease,
+    border .3s ease;
+}
+
+.cursor-grow .cursor {
+  width: 18px;
+  height: 18px;
+}
+
+.cursor-grow .cursor-ring {
+  width: 65px;
+  height: 65px;
+  border-color: var(--gold);
+}
+
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  background: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    opacity 1s ease,
+    visibility 1s ease;
+}
+
+.loader.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-inner {
+  text-align: center;
+}
+
+.loader-brand {
+  font-size: clamp(35px, 7vw, 75px);
+  font-weight: 800;
+  letter-spacing: -4px;
+}
+
+.loader-line {
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  margin: 25px auto;
+  animation: loadline 1.7s ease forwards;
+}
+
+.loader-small {
+  color: #555;
+  font-size: 9px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+@keyframes loadline {
+  to {
+    width: 180px;
+  }
+}
+
+
+/* =========================================================
    NAVIGATION
-===================================================== */
+========================================================= */
 
 .nav {
   position: fixed;
   top: 0;
-  right: 0;
-  padding: 25px;
-  z-index: 9999;
+  left: 0;
+  width: 100%;
+  padding: 25px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 9000;
+  pointer-events: none;
+}
+
+.nav-logo {
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 4px;
+  pointer-events: auto;
+}
+
+.nav-logo span {
+  color: var(--gold);
 }
 
 .menu-button {
-  width: 52px;
-  height: 52px;
-  border: 1px solid rgba(212,175,55,0.45);
-  background: rgba(7,7,7,0.82);
-  backdrop-filter: blur(10px);
+  width: 54px;
+  height: 54px;
+  border: 1px solid rgba(212,175,55,.45);
+  background: rgba(5,5,5,.75);
   color: var(--gold);
-  font-size: 24px;
-  cursor: pointer;
-  transition: 0.35s ease;
+  pointer-events: auto;
+  font-size: 22px;
+  transition: .3s ease;
+  backdrop-filter: blur(12px);
 }
 
 .menu-button:hover {
@@ -81,19 +203,19 @@ a {
 }
 
 .menu {
-  position: absolute;
-  top: 88px;
-  right: 25px;
-  width: 220px;
+  position: fixed;
+  top: 95px;
+  right: 30px;
+  width: 235px;
   padding: 12px;
-  background: rgba(15,15,15,0.97);
+  background: rgba(12,12,12,.97);
   border: 1px solid var(--line);
-  box-shadow: 0 25px 70px rgba(0,0,0,0.7);
+  box-shadow: 0 30px 100px rgba(0,0,0,.7);
 
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-10px);
-  transition: 0.3s ease;
+  transform: translateY(-15px);
+  transition: .35s ease;
 }
 
 .menu.active {
@@ -103,486 +225,593 @@ a {
 }
 
 .menu a {
-  display: flex;
-  padding: 14px 15px;
-  color: #ccc;
-  font-size: 11px;
-  letter-spacing: 3px;
-  transition: 0.3s;
+  display: block;
+  padding: 15px;
+  color: #aaa;
+  font-size: 10px;
+  letter-spacing: 4px;
+  transition: .3s ease;
 }
 
 .menu a:hover {
   color: var(--gold);
-  padding-left: 22px;
+  padding-left: 23px;
 }
 
 
-/* =====================================================
+/* =========================================================
    HERO
-===================================================== */
+========================================================= */
 
 .hero {
   min-height: 100vh;
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 100px 25px;
+  padding: 120px 6vw;
+  overflow: hidden;
 
   background:
     radial-gradient(
-      circle at 50% 40%,
-      rgba(212,175,55,0.07),
-      transparent 28%
+      circle at 50% 45%,
+      rgba(212,175,55,.08),
+      transparent 24%
     ),
-    linear-gradient(
-      145deg,
-      #050505,
-      #151515 50%,
-      #060606
-    );
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(255,255,255,.035),
+      transparent 25%
+    ),
+    #050505;
 }
 
-.hero::before {
-  content: "";
+.hero::after {
+  content: "X";
   position: absolute;
-  inset: 30px;
-  border: 1px solid rgba(255,255,255,0.035);
+  right: -3vw;
+  bottom: -16vw;
+  font-size: 55vw;
+  font-weight: 900;
+  line-height: .7;
+  color: rgba(255,255,255,.018);
   pointer-events: none;
 }
 
 .hero-content {
-  max-width: 1050px;
   position: relative;
   z-index: 2;
+  width: 100%;
+}
+
+.hero-top {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 35px;
 }
 
 .logo {
-  width: 165px;
-  max-width: 60%;
-  margin-bottom: 35px;
+  width: 125px;
+  height: 125px;
+  object-fit: contain;
 }
 
-.eyebrow {
-  color: #888;
-  font-size: 11px;
+.hero-label {
+  color: #777;
+  font-size: 10px;
   letter-spacing: 6px;
   text-transform: uppercase;
-  margin-bottom: 25px;
 }
 
 .hero h1 {
-  font-size: clamp(52px, 11vw, 120px);
-  line-height: 0.86;
-  letter-spacing: -5px;
-  font-weight: 800;
-  margin-bottom: 35px;
+  max-width: 1200px;
+  font-size: clamp(65px, 13vw, 175px);
+  line-height: .78;
+  letter-spacing: -9px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.hero h1 .second {
+  display: block;
+  padding-left: 10vw;
+}
+
+.hero-bottom {
+  margin-top: 65px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 50px;
 }
 
 .hero-description {
-  max-width: 690px;
-  margin: auto;
-  color: #999;
-  font-size: 17px;
+  max-width: 520px;
+  color: #888;
+  font-size: 16px;
 }
 
-.hero-button {
-  display: inline-block;
-  margin-top: 42px;
-  padding: 16px 34px;
-  border: 1px solid var(--gold);
+.hero-link {
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 10px;
   color: var(--gold);
-  font-size: 11px;
+  font-size: 10px;
   letter-spacing: 4px;
-  transition: 0.35s ease;
+  transition: .3s ease;
 }
 
-.hero-button:hover {
-  background: var(--gold);
-  color: var(--black);
+.hero-link:hover {
+  letter-spacing: 6px;
 }
 
-
-/* =====================================================
-   SCROLL INDICATOR
-===================================================== */
-
-.scroll-indicator {
+.scroll {
   position: absolute;
-  bottom: 28px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #555;
+  bottom: 30px;
+  right: 35px;
+  writing-mode: vertical-rl;
+  color: #444;
   font-size: 9px;
   letter-spacing: 4px;
   text-transform: uppercase;
 }
 
 
-/* =====================================================
+/* =========================================================
+   MARQUEE
+========================================================= */
+
+.marquee {
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 18px 0;
+  white-space: nowrap;
+  background: #080808;
+}
+
+.marquee-track {
+  display: inline-block;
+  animation: marquee 25s linear infinite;
+}
+
+.marquee span {
+  margin: 0 25px;
+  font-size: 11px;
+  letter-spacing: 5px;
+  color: #777;
+  text-transform: uppercase;
+}
+
+.marquee .star {
+  color: var(--gold);
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+
+/* =========================================================
    GENERAL
-===================================================== */
+========================================================= */
 
 section {
-  max-width: 1200px;
+  max-width: 1250px;
   margin: auto;
-  padding: 125px 30px;
+  padding: 145px 40px;
   scroll-margin-top: 80px;
 }
 
 .label {
-  color: #666;
-  font-size: 10px;
-  letter-spacing: 5px;
+  color: #555;
+  font-size: 9px;
+  letter-spacing: 6px;
   text-transform: uppercase;
-  margin-bottom: 22px;
+  margin-bottom: 25px;
 }
 
-.title {
-  font-size: clamp(42px, 7vw, 82px);
-  line-height: 0.92;
-  letter-spacing: -3px;
-  margin-bottom: 35px;
+.big-title {
+  font-size: clamp(50px, 8vw, 105px);
+  line-height: .86;
+  letter-spacing: -5px;
+  text-transform: uppercase;
 }
 
 .copy {
-  max-width: 760px;
-  color: #999;
-  font-size: 17px;
-}
-
-.copy + .copy {
-  margin-top: 20px;
+  color: #858585;
+  font-size: 16px;
+  max-width: 720px;
 }
 
 
-/* =====================================================
-   INTRO
-===================================================== */
+/* =========================================================
+   ABOUT
+========================================================= */
 
-.intro-section {
-  min-height: 70vh;
+.about {
+  min-height: 90vh;
   display: flex;
   align-items: center;
 }
 
-.intro-grid {
+.about-grid {
+  width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 100px;
+  align-items: end;
+}
+
+.about-right {
+  padding-bottom: 10px;
+}
+
+.about-statement {
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1.05;
+  color: #ddd;
+  margin-bottom: 35px;
+}
+
+.about-statement strong {
+  color: var(--gold);
+  font-weight: normal;
+}
+
+
+/* =========================================================
+   PHILOSOPHY
+========================================================= */
+
+.philosophy {
+  max-width: none;
+  padding: 170px 7vw;
+  background:
+    linear-gradient(
+      135deg,
+      #121212,
+      #070707
+    );
+}
+
+.philosophy-inner {
+  max-width: 1250px;
+  margin: auto;
+}
+
+.philosophy h2 {
+  font-size: clamp(55px, 10vw, 130px);
+  line-height: .82;
+  letter-spacing: -7px;
+  text-transform: uppercase;
+}
+
+.philosophy h2 .indent {
+  padding-left: 13vw;
+  display: block;
+}
+
+
+/* =========================================================
+   SERVICES
+========================================================= */
+
+.services-top {
+  display: grid;
+  grid-template-columns: 1fr .8fr;
   gap: 80px;
   align-items: end;
 }
 
-.intro-statement {
-  font-size: clamp(25px, 4vw, 43px);
-  line-height: 1.1;
-  color: #ddd;
-}
-
-.intro-statement span {
-  color: var(--gold);
-}
-
-
-/* =====================================================
-   BIG STATEMENT
-===================================================== */
-
-.statement {
-  max-width: none;
-  padding: 150px 30px;
-  background:
-    linear-gradient(
-      135deg,
-      #111,
-      #080808
-    );
-  text-align: center;
-}
-
-.statement-inner {
-  max-width: 1100px;
-  margin: auto;
-}
-
-.statement h2 {
-  font-size: clamp(43px, 8vw, 95px);
-  line-height: 0.9;
-  letter-spacing: -4px;
-}
-
-
-/* =====================================================
-   SERVICES
-===================================================== */
-
-.services-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  gap: 30px;
-}
-
-.services-header .copy {
-  max-width: 430px;
-}
-
-.services-grid {
-  margin-top: 70px;
+.services-list {
+  margin-top: 80px;
   border-top: 1px solid var(--line);
 }
 
 .service {
+  min-height: 105px;
   display: grid;
   grid-template-columns: 80px 1fr 1fr;
-  gap: 25px;
   align-items: center;
-  padding: 30px 5px;
+  gap: 25px;
   border-bottom: 1px solid var(--line);
-  transition: 0.35s ease;
+  transition: .4s ease;
 }
 
 .service:hover {
-  padding-left: 18px;
-  padding-right: 18px;
-  background: #101010;
+  padding-left: 25px;
+  background: #0d0d0d;
 }
 
 .service-number {
-  color: #555;
-  font-size: 11px;
+  color: #444;
+  font-size: 10px;
   letter-spacing: 2px;
 }
 
 .service h3 {
-  color: var(--gold);
+  color: #ddd;
   font-size: 21px;
+  font-weight: normal;
+  transition: .3s;
+}
+
+.service:hover h3 {
+  color: var(--gold);
 }
 
 .service p {
-  color: #777;
-  font-size: 14px;
+  color: #666;
+  font-size: 13px;
 }
 
 
-/* =====================================================
-   EXPERIENCES
-===================================================== */
+/* =========================================================
+   WORK
+========================================================= */
 
-.experience-intro {
-  max-width: 700px;
+.work-intro {
+  max-width: 800px;
 }
 
-.experience-grid {
+.work-grid {
+  margin-top: 80px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-top: 65px;
+  grid-template-columns: 1.25fr .75fr;
+  gap: 25px;
+  align-items: start;
 }
 
-.experience-card {
+.work-card {
   position: relative;
   overflow: hidden;
-  background: #0e0e0e;
+  background: #0c0c0c;
   border: 1px solid var(--line);
 }
 
-.experience-card.wide {
-  grid-column: span 2;
+.work-card:nth-child(2) {
+  margin-top: 160px;
 }
 
-.experience-card img {
+.work-card:nth-child(3) {
+  grid-column: span 2;
+  max-width: 72%;
+}
+
+.work-image {
   width: 100%;
   display: block;
   background: #080808;
-  transition: transform 0.8s ease;
+  transition: transform 1s cubic-bezier(.2,.7,.2,1);
 }
 
-.experience-card:hover img {
-  transform: scale(1.025);
+.work-card:hover .work-image {
+  transform: scale(1.035);
 }
 
-.events-img,
-.creative-img {
+.events-image,
+.creative-image {
   aspect-ratio: 4 / 3;
   object-fit: contain;
 }
 
-.exploration-img {
+.exploration-image {
   aspect-ratio: 3 / 4;
   object-fit: contain;
 }
 
-.experience-info {
-  padding: 27px;
-  background: #101010;
+.work-meta {
+  padding: 25px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: end;
 }
 
-.experience-info h3 {
-  color: var(--gold);
-  font-size: 23px;
-  margin-bottom: 7px;
-}
-
-.experience-info p {
-  color: #777;
-  font-size: 14px;
-}
-
-
-/* =====================================================
-   BRANDS
-===================================================== */
-
-.brands-header {
-  max-width: 750px;
-}
-
-.brand-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-  margin-top: 65px;
-}
-
-.brand-card {
-  background: #101010;
-  border: 1px solid var(--line);
-  overflow: hidden;
-  transition: 0.4s ease;
-}
-
-.brand-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(212,175,55,0.6);
-}
-
-.brand-card img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: contain;
-  display: block;
-  background: #080808;
-  transition: transform 0.8s ease;
-}
-
-.brand-card:hover img {
-  transform: scale(1.025);
-}
-
-.brand-info {
-  padding: 28px;
-}
-
-.brand-index {
-  color: #555;
-  font-size: 10px;
-  letter-spacing: 3px;
-  margin-bottom: 14px;
-}
-
-.brand-info h3 {
+.work-meta h3 {
   color: var(--gold);
   font-size: 22px;
-  margin-bottom: 8px;
+  font-weight: normal;
 }
 
-.brand-info p {
-  color: #777;
-  font-size: 14px;
+.work-meta p {
+  color: #666;
+  font-size: 12px;
+  max-width: 300px;
 }
 
 
-/* =====================================================
+/* =========================================================
+   BRANDS
+========================================================= */
+
+.brands {
+  max-width: none;
+  background: #080808;
+}
+
+.brands-header {
+  max-width: 1250px;
+  margin: auto;
+  padding: 0 40px;
+}
+
+.brand-list {
+  max-width: 1250px;
+  margin: 80px auto 0;
+  padding: 0 40px;
+}
+
+.brand {
+  display: grid;
+  grid-template-columns: 100px 1fr 1fr;
+  gap: 35px;
+  align-items: center;
+  padding: 30px 0;
+  border-top: 1px solid var(--line);
+}
+
+.brand:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.brand-number {
+  color: #444;
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+.brand-name {
+  font-size: clamp(25px, 4vw, 48px);
+  color: #ddd;
+  font-weight: normal;
+  transition: .4s;
+}
+
+.brand:hover .brand-name {
+  color: var(--gold);
+  transform: translateX(10px);
+}
+
+.brand-description {
+  color: #666;
+  font-size: 13px;
+}
+
+
+/* =========================================================
    FOUNDER
-===================================================== */
+========================================================= */
 
-.founder-section {
+.founder {
   border-top: 1px solid var(--line);
 }
 
 .founder-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  grid-template-columns: 1fr .8fr;
+  gap: 100px;
   align-items: center;
 }
 
 .founder-name {
-  font-size: clamp(32px, 5vw, 58px);
-  line-height: 0.98;
+  font-size: clamp(40px, 6vw, 75px);
+  line-height: .9;
   color: var(--gold);
-  margin-bottom: 20px;
+  letter-spacing: -3px;
 }
 
-.founder-mark {
+.signature {
+  margin-top: 45px;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 27px;
+  color: #777;
+}
+
+.founder-quote {
   border-left: 1px solid var(--gold);
   padding-left: 35px;
-  color: #777;
-  font-size: 16px;
+  font-size: clamp(22px, 3vw, 34px);
+  line-height: 1.1;
+  color: #bbb;
 }
 
 
-/* =====================================================
-   CTA
-===================================================== */
+/* =========================================================
+   FINAL CTA
+========================================================= */
 
 .cta {
   max-width: none;
-  padding: 170px 30px;
+  padding: 190px 6vw;
   text-align: center;
   background:
     radial-gradient(
       circle at center,
-      rgba(212,175,55,0.08),
-      transparent 35%
+      rgba(212,175,55,.08),
+      transparent 30%
     ),
-    #0d0d0d;
+    #0a0a0a;
 }
 
 .cta h2 {
-  max-width: 1050px;
-  margin: auto;
-  font-size: clamp(43px, 8vw, 95px);
-  line-height: 0.9;
-  letter-spacing: -4px;
+  font-size: clamp(55px, 10vw, 135px);
+  line-height: .82;
+  letter-spacing: -7px;
+  text-transform: uppercase;
 }
 
-.cta p {
-  max-width: 600px;
-  margin: 30px auto 0;
-  color: #777;
+.cta-button {
+  display: inline-block;
+  margin-top: 55px;
+  border: 1px solid var(--gold);
+  padding: 17px 35px;
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 4px;
+  transition: .35s;
+}
+
+.cta-button:hover {
+  background: var(--gold);
+  color: var(--black);
 }
 
 
-/* =====================================================
+/* =========================================================
    FOOTER
-===================================================== */
+========================================================= */
 
 footer {
-  padding: 70px 30px;
-  text-align: center;
+  padding: 80px 40px 45px;
   border-top: 1px solid var(--line);
 }
 
-.contact-number {
-  display: inline-block;
+.footer-grid {
+  max-width: 1250px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.footer-brand {
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.footer-brand span {
   color: var(--gold);
-  font-size: 21px;
-  margin-top: 8px;
+}
+
+.footer-right {
+  text-align: right;
+}
+
+.phone {
+  color: var(--gold);
+  font-size: 18px;
 }
 
 .socials {
-  margin-top: 25px;
+  margin-top: 18px;
 }
 
 .socials a {
-  color: #888;
-  margin: 0 13px;
-  font-size: 12px;
-  letter-spacing: 1px;
-  transition: 0.3s;
+  color: #777;
+  margin-left: 20px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  transition: .3s;
 }
 
 .socials a:hover {
@@ -590,20 +819,23 @@ footer {
 }
 
 .copyright {
-  color: #444;
-  font-size: 11px;
-  margin-top: 35px;
+  max-width: 1250px;
+  margin: 65px auto 0;
+  color: #3d3d3d;
+  font-size: 10px;
 }
 
 
-/* =====================================================
-   REVEAL ANIMATION
-===================================================== */
+/* =========================================================
+   REVEAL ANIMATIONS
+========================================================= */
 
 .reveal {
   opacity: 0;
-  transform: translateY(35px);
-  transition: opacity 0.9s ease, transform 0.9s ease;
+  transform: translateY(50px);
+  transition:
+    opacity 1s ease,
+    transform 1s cubic-bezier(.2,.7,.2,1);
 }
 
 .reveal.visible {
@@ -611,18 +843,47 @@ footer {
   transform: translateY(0);
 }
 
+.image-reveal {
+  overflow: hidden;
+}
 
-/* =====================================================
+.image-reveal img {
+  transform: scale(1.12);
+  transition: transform 1.3s cubic-bezier(.2,.7,.2,1);
+}
+
+.image-reveal.visible img {
+  transform: scale(1);
+}
+
+
+/* =========================================================
    MOBILE
-===================================================== */
+========================================================= */
 
 @media (max-width: 800px) {
+
+  body,
+  a,
+  button {
+    cursor: auto;
+  }
+
+  .cursor,
+  .cursor-ring {
+    display: none;
+  }
 
   .nav {
     padding: 18px;
   }
 
+  .nav-logo {
+    font-size: 10px;
+  }
+
   .menu {
+    top: 82px;
     right: 18px;
   }
 
@@ -631,33 +892,69 @@ footer {
   }
 
   .hero {
-    padding: 100px 20px;
+    padding: 115px 20px 90px;
   }
 
-  .hero::before {
-    inset: 15px;
+  .hero::after {
+    font-size: 90vw;
+  }
+
+  .hero-top {
+    align-items: flex-start;
+    margin-bottom: 30px;
+  }
+
+  .logo {
+    width: 90px;
+    height: 90px;
   }
 
   .hero h1 {
-    letter-spacing: -3px;
+    font-size: clamp(55px, 17vw, 100px);
+    letter-spacing: -5px;
   }
 
-  .intro-grid,
+  .hero h1 .second {
+    padding-left: 0;
+  }
+
+  .hero-bottom {
+    display: block;
+    margin-top: 45px;
+  }
+
+  .hero-link {
+    display: inline-block;
+    margin-top: 30px;
+  }
+
+  .scroll {
+    display: none;
+  }
+
+  .about-grid,
+  .services-top,
   .founder-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 45px;
   }
 
-  .services-header {
-    display: block;
+  .philosophy {
+    padding: 110px 20px;
   }
 
-  .services-header .copy {
-    margin-top: 25px;
+  .philosophy h2 {
+    font-size: clamp(48px, 14vw, 90px);
+    letter-spacing: -4px;
+  }
+
+  .philosophy h2 .indent {
+    padding-left: 0;
   }
 
   .service {
     grid-template-columns: 45px 1fr;
+    padding: 25px 0;
   }
 
   .service p {
@@ -665,21 +962,58 @@ footer {
     margin-top: -15px;
   }
 
-  .experience-grid {
+  .work-grid {
     grid-template-columns: 1fr;
   }
 
-  .experience-card.wide {
+  .work-card:nth-child(2) {
+    margin-top: 0;
+  }
+
+  .work-card:nth-child(3) {
     grid-column: span 1;
+    max-width: 100%;
   }
 
-  .brand-grid {
-    grid-template-columns: 1fr;
+  .brand {
+    grid-template-columns: 45px 1fr;
+    gap: 15px;
   }
 
-  .statement,
+  .brand-description {
+    grid-column: 2;
+  }
+
+  .brand-list,
+  .brands-header {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .founder-quote {
+    padding-left: 22px;
+  }
+
   .cta {
-    padding: 110px 20px;
+    padding: 120px 20px;
+  }
+
+  .cta h2 {
+    font-size: clamp(50px, 14vw, 90px);
+    letter-spacing: -5px;
+  }
+
+  .footer-grid {
+    display: block;
+  }
+
+  .footer-right {
+    text-align: left;
+    margin-top: 40px;
+  }
+
+  .socials a {
+    margin: 0 20px 0 0;
   }
 
 }
@@ -691,483 +1025,468 @@ footer {
 <body>
 
 
-<!-- =====================================================
+<!-- =========================================================
+     CURSOR
+========================================================= -->
+
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
+
+
+<!-- =========================================================
+     LOADER
+========================================================= -->
+
+<div class="loader" id="loader">
+
+  <div class="loader-inner">
+
+    <div class="loader-brand">
+      FATHER <span class="gold">XANDER</span>
+    </div>
+
+    <div class="loader-line"></div>
+
+    <div class="loader-small">
+      Creative Solutions
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
      NAVIGATION
-===================================================== -->
+========================================================= -->
 
 <nav class="nav">
+
+  <a href="#home" class="nav-logo">
+    FATHER <span>XANDER</span>
+  </a>
 
   <button
     class="menu-button"
     onclick="toggleMenu()"
-    aria-label="Open navigation">
+    aria-label="Open menu">
     ☰
   </button>
-
-  <div class="menu" id="menu">
-
-    <a href="#home" onclick="toggleMenu()">HOME</a>
-    <a href="#about" onclick="toggleMenu()">ABOUT</a>
-    <a href="#services" onclick="toggleMenu()">SERVICES</a>
-    <a href="#experiences" onclick="toggleMenu()">EXPERIENCES</a>
-    <a href="#brands" onclick="toggleMenu()">BRANDS</a>
-    <a href="#founder" onclick="toggleMenu()">FOUNDER</a>
-    <a href="#contact" onclick="toggleMenu()">CONTACT</a>
-
-  </div>
 
 </nav>
 
 
+<div class="menu" id="menu">
 
-<!-- =====================================================
+  <a href="#home" onclick="toggleMenu()">HOME</a>
+  <a href="#about" onclick="toggleMenu()">ABOUT</a>
+  <a href="#services" onclick="toggleMenu()">CAPABILITIES</a>
+  <a href="#work" onclick="toggleMenu()">EXPERIENCES</a>
+  <a href="#brands" onclick="toggleMenu()">BRANDS</a>
+  <a href="#founder" onclick="toggleMenu()">THE VISION</a>
+  <a href="#contact" onclick="toggleMenu()">CONTACT</a>
+
+</div>
+
+
+<!-- =========================================================
      HERO
-===================================================== -->
+========================================================= -->
 
 <header class="hero" id="home">
 
   <div class="hero-content">
 
-    <img
-      class="logo"
-      src="IMG-20260830-WA0083.jpg"
-      alt="Father Xander Creative Solutions Logo">
+    <div class="hero-top">
 
-    <div class="eyebrow">
-      Create • Inspire • Elevate
+      <img
+        class="logo"
+        src="IMG-20260830-WA0083.jpg"
+        alt="Father Xander Creative Solutions">
+
+      <div class="hero-label">
+        Creative Solutions<br>
+        Since 2026
+      </div>
+
     </div>
 
+
     <h1>
-      WE CREATE<br>
-      <span class="gold">THE EXTRAORDINARY.</span>
+
+      We Create
+
+      <span class="second gold">
+        The Extraordinary.
+      </span>
+
     </h1>
 
-    <p class="hero-description">
-      Father Xander Creative Solutions is a multidisciplinary
-      creative company creating brands, experiences, events
-      and ventures that stand apart.
-    </p>
 
-    <a
-      class="hero-button"
-      href="#experiences">
-      ENTER OUR WORLD
-    </a>
+    <div class="hero-bottom">
+
+      <p class="hero-description">
+        A multidisciplinary creative house building
+        experiences, brands, ventures and ideas that
+        refuse to be ordinary.
+      </p>
+
+      <a
+        class="hero-link"
+        href="#work">
+        EXPLORE THE HOUSE →
+      </a>
+
+    </div>
 
   </div>
 
-  <div class="scroll-indicator">
-    Scroll to explore
+
+  <div class="scroll">
+    Scroll to discover
   </div>
 
 </header>
 
 
 
-<!-- =====================================================
+<!-- =========================================================
+     MARQUEE
+========================================================= -->
+
+<div class="marquee">
+
+  <div class="marquee-track">
+
+    <span>CREATE</span>
+    <span class="star">✦</span>
+    <span>INSPIRE</span>
+    <span class="star">✦</span>
+    <span>ELEVATE</span>
+    <span class="star">✦</span>
+    <span>IMPACT</span>
+    <span class="star">✦</span>
+    <span>INNOVATION</span>
+    <span class="star">✦</span>
+
+    <span>CREATE</span>
+    <span class="star">✦</span>
+    <span>INSPIRE</span>
+    <span class="star">✦</span>
+    <span>ELEVATE</span>
+    <span class="star">✦</span>
+    <span>IMPACT</span>
+    <span class="star">✦</span>
+    <span>INNOVATION</span>
+    <span class="star">✦</span>
+
+  </div>
+
+</div>
+
+
+
+<!-- =========================================================
      ABOUT
-===================================================== -->
+========================================================= -->
 
-<section class="intro-section" id="about">
+<section class="about reveal" id="about">
 
-  <div class="intro-grid">
+  <div class="about-grid">
 
     <div>
 
       <div class="label">
-        The House
+        01 / The House
       </div>
 
-      <h2 class="title">
-        MORE THAN<br>
+      <h2 class="big-title">
+        NOT JUST<br>
         <span class="gold">CREATIVE.</span>
       </h2>
 
     </div>
 
 
-    <div>
+    <div class="about-right">
 
-      <p class="intro-statement">
-        We create <span>out-of-the-ordinary events</span>,
-        innovative concepts, high-class services and
-        experiences designed to leave an impact.
+      <p class="about-statement">
+        We create <strong>out-of-the-ordinary</strong>
+        events, innovative concepts, high-class services
+        and experiences built to leave an impact.
       </p>
 
-      <p class="copy" style="margin-top:30px;">
-        From the first spark of an idea to the final execution,
-        Father Xander Creative Solutions brings creativity,
-        strategy and precision together.
+      <p class="copy">
+        Father Xander Creative Solutions brings ideas,
+        strategy, creativity and execution together to
+        create work that stands apart.
       </p>
 
-    </div>
+      <p class="copy" style="margin-top:20px;">
+        We believe every idea has the potential to become something
+extraordinary when it is given the right vision.
+      </p>
 
-  </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     STATEMENT
-===================================================== -->
-
-<section class="statement">
-
-  <div class="statement-inner">
-
-    <div class="label">
-      Our Philosophy
-    </div>
-
-    <h2>
-      WE DON'T FOLLOW<br>
-      THE ORDINARY.
-
-      <br><br>
-
-      <span class="gold">
-        WE CREATE<br>
-        THE EXTRAORDINARY.
-      </span>
-    </h2>
-
-  </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     SERVICES
-===================================================== -->
-
-<section id="services">
-
-  <div class="services-header">
-
-    <div>
-
-      <div class="label">
-        Capabilities
       </div>
+    </div>
 
-      <h2 class="title">
-        WHAT WE<br>
-        <span class="gold">CREATE.</span>
+  </section>
+
+  <section class="philosophy reveal">
+
+    <div class="philosophy-inner">
+
+      <div class="label">02 / Philosophy</div>
+
+      <h2>
+        Ordinary<br>
+        <span class="indent">Is Easy.</span>
+        <br>
+        <span class="gold">Extraordinary</span>
+        <span class="indent">Is Intentional.</span>
       </h2>
 
     </div>
 
-    <p class="copy">
-      Ideas are only the beginning. We bring the strategy,
-      creativity and execution required to turn them into
-      something exceptional.
-    </p>
-
-  </div>
+  </section>
 
 
-  <div class="services-grid">
+  <section id="services" class="reveal">
 
+    <div class="services-top">
 
-    <div class="service">
-      <div class="service-number">01</div>
-      <h3>Events & Experiences</h3>
-      <p>
-        Concepts, planning, production, promotion,
-        branding and experiential activations.
+      <div>
+        <div class="label">03 / Capabilities</div>
+
+        <h2 class="big-title">
+          WHAT<br>
+          <span class="gold">WE CREATE.</span>
+        </h2>
+      </div>
+
+      <p class="copy">
+        From concept to execution, we build the creative
+        architecture behind experiences, brands and ventures.
       </p>
+
     </div>
 
 
-    <div class="service">
-      <div class="service-number">02</div>
-      <h3>Branding & Design</h3>
-      <p>
-        Brand identity, graphic design, logo development,
-        creative direction and visual communication.
-      </p>
-    </div>
+    <div class="services-list">
 
+      <div class="service">
+        <div class="service-number">01</div>
+        <h3>Events & Experiences</h3>
+        <p>Concept, planning, production, promotion, branding and experiential activations.</p>
+      </div>
 
-    <div class="service">
-      <div class="service-number">03</div>
-      <h3>Excursions & Adventures</h3>
-      <p>
-        Curated adventures, outdoor experiences,
-        excursions and memorable journeys.
-      </p>
-    </div>
+      <div class="service">
+        <div class="service-number">02</div>
+        <h3>Branding & Design</h3>
+        <p>Identity systems, logo design, graphic design, creative direction and visual communication.</p>
+      </div>
 
+      <div class="service">
+        <div class="service-number">03</div>
+        <h3>Excursions & Adventures</h3>
+        <p>Curated adventures, outdoor experiences, excursions and memorable journeys.</p>
+      </div>
 
-    <div class="service">
-      <div class="service-number">04</div>
-      <h3>Talent Management</h3>
-      <p>
-        Talent development, coordination, representation
-        and opportunities for emerging creatives.
-      </p>
-    </div>
+      <div class="service">
+        <div class="service-number">04</div>
+        <h3>Talent Management</h3>
+        <p>Talent development, coordination, representation and creative opportunities.</p>
+      </div>
 
+      <div class="service">
+        <div class="service-number">05</div>
+        <h3>Marketing & Publicity</h3>
+        <p>Campaigns, digital marketing, publicity, social media and promotional content.</p>
+      </div>
 
-    <div class="service">
-      <div class="service-number">05</div>
-      <h3>Marketing & Publicity</h3>
-      <p>
-        Campaign strategy, digital marketing, social media,
-        publicity and promotional content.
-      </p>
-    </div>
+      <div class="service">
+        <div class="service-number">06</div>
+        <h3>Creative Strategy</h3>
+        <p>Concept development, consultancy, direction and creative problem solving.</p>
+      </div>
 
+      <div class="service">
+        <div class="service-number">07</div>
+        <h3>Partnerships & Sponsorships</h3>
+        <p>Strategic collaborations and sponsorship opportunities for creative ventures.</p>
+      </div>
 
-    <div class="service">
-      <div class="service-number">06</div>
-      <h3>Creative Strategy</h3>
-      <p>
-        Concept development, consultancy, project direction
-        and creative problem solving.
-      </p>
-    </div>
-
-
-    <div class="service">
-      <div class="service-number">07</div>
-      <h3>Partnerships & Sponsorships</h3>
-      <p>
-        Strategic collaborations, partnerships and sponsorship
-        opportunities for creative ventures.
-      </p>
-    </div>
-
-
-    <div class="service">
-      <div class="service-number">08</div>
-      <h3>Entertainment & Lifestyle</h3>
-      <p>
-        Distinctive entertainment, lifestyle and youth-focused
-        experiences with strong identities.
-      </p>
-    </div>
-
-
-  </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     EXPERIENCES
-===================================================== -->
-
-<section id="experiences">
-
-  <div class="experience-intro">
-
-    <div class="label">
-      Selected Experiences
-    </div>
-
-    <h2 class="title">
-      BEYOND THE<br>
-      <span class="gold">ORDINARY.</span>
-    </h2>
-
-    <p class="copy">
-      We don't just organise events. We build moments,
-      environments and experiences people remember.
-    </p>
-
-  </div>
-
-
-  <div class="experience-grid">
-
-
-    <!-- EVENTS -->
-
-    <div class="experience-card wide">
-
-      <img
-        class="events-img"
-        src="IMG-20260705-WA0307(1).jpg"
-        alt="Father Xander Events">
-
-      <div class="experience-info">
-
-        <h3>
-          Events
-        </h3>
-
-        <p>
-          Bold concepts transformed into distinctive,
-          high-impact experiences.
-        </p>
-
+      <div class="service">
+        <div class="service-number">08</div>
+        <h3>Entertainment & Lifestyle</h3>
+        <p>Distinctive entertainment and lifestyle experiences with strong identities.</p>
       </div>
 
     </div>
 
+  </section>
 
-    <!-- EXPLORATION -->
 
-    <div class="experience-card">
+  <section id="work" class="reveal">
 
-      <img
-        class="exploration-img"
-        src="IMG-20260824-WA0510.jpg"
-        alt="Father Xander Exploration">
+    <div class="work-intro">
 
-      <div class="experience-info">
+      <div class="label">04 / Selected Experiences</div>
 
-        <h3>
-          Exploration
-        </h3>
+      <h2 class="big-title">
+        BEYOND<br>
+        <span class="gold">ORDINARY.</span>
+      </h2>
 
-        <p>
-          Adventures that take people beyond the familiar.
-        </p>
-
-      </div>
+      <p class="copy" style="margin-top:30px;">
+        We don't simply organise things.
+        We build moments, environments and experiences
+        people remember.
+      </p>
 
     </div>
 
 
-    <!-- CREATIVE PROJECTS -->
+    <div class="work-grid">
 
-    <div class="experience-card">
+      <article class="work-card image-reveal">
 
-      <img
-        class="creative-img"
-        src="IMG-20260830-WA0053.jpg"
-        alt="Father Xander Creative Projects">
+        <img
+          class="work-image events-image"
+          src="IMG-20260705-WA0307(1).jpg"
+          alt="Father Xander Events">
 
-      <div class="experience-info">
+        <div class="work-meta">
 
-        <h3>
-          Creative Projects
-        </h3>
+          <div>
+            <div class="label">Experience 01</div>
+            <h3>Events</h3>
+          </div>
 
-        <p>
-          Original ideas, campaigns and ventures brought
-          into reality.
-        </p>
+          <p>
+            Bold concepts transformed into distinctive,
+            high-impact experiences.
+          </p>
 
-      </div>
-
-    </div>
-
-
-  </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     BRANDS
-===================================================== -->
-
-<section id="brands">
-
-  <div class="brands-header">
-
-    <div class="label">
-      The Ecosystem
-    </div>
-
-    <h2 class="title">
-      OUR<br>
-      <span class="gold">BRANDS.</span>
-    </h2>
-
-    <p class="copy">
-      Distinct ventures. One creative vision.
-      Each brand exists to create something different.
-    </p>
-
-  </div>
-
-
-  <div class="brand-grid">
-
-
-    <!-- WILD HEART -->
-
-    <div class="brand-card">
-
-      <img
-        src="IMG-20260830-WA0100.jpg"
-        alt="Wild Heart Explorers">
-
-      <div class="brand-info">
-
-        <div class="brand-index">
-          BRAND 01
         </div>
 
-        <h3>
+      </article>
+
+
+      <article class="work-card image-reveal">
+
+        <img
+          class="work-image exploration-image"
+          src="IMG-20260824-WA0510.jpg"
+          alt="Father Xander Exploration">
+
+        <div class="work-meta">
+
+          <div>
+            <div class="label">Experience 02</div>
+            <h3>Exploration</h3>
+          </div>
+
+          <p>
+            Adventures designed to take people beyond
+            the familiar.
+          </p>
+
+        </div>
+
+      </article>
+
+
+      <article class="work-card image-reveal">
+
+        <img
+          class="work-image creative-image"
+          src="IMG-20260830-WA0053.jpg"
+          alt="Father Xander Creative Projects">
+
+        <div class="work-meta">
+
+          <div>
+            <div class="label">Experience 03</div>
+            <h3>Creative Projects</h3>
+          </div>
+
+          <p>
+            Original concepts, campaigns and ventures
+            brought from imagination into reality.
+          </p>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <section class="brands reveal" id="brands">
+
+    <div class="brands-header">
+
+      <div class="label">05 / The Ecosystem</div>
+
+      <h2 class="big-title">
+        ONE HOUSE.<br>
+        <span class="gold">MANY WORLDS.</span>
+      </h2>
+
+      <p class="copy" style="margin-top:30px;">
+        Distinct ventures. One creative vision.
+        Each brand is built to create something different.
+      </p>
+
+    </div>
+
+
+    <div class="brand-list">
+
+      <div class="brand">
+
+        <div class="brand-number">01</div>
+
+        <div class="brand-name">
           Wild Heart Explorers
-        </h3>
+        </div>
 
-        <p>
+        <p class="brand-description">
           Adventure, exploration and curated experiences
-          designed to take people beyond the ordinary.
+          for people who want to step outside the ordinary.
         </p>
 
       </div>
 
-    </div>
 
+      <div class="brand">
 
-    <!-- HOUSE OF XANDER -->
+        <div class="brand-number">02</div>
 
-    <div class="brand-card">
-
-      <img
-        src="IMG-20260830-WA0102.jpg"
-        alt="House of Xander">
-
-      <div class="brand-info">
-
-        <div class="brand-index">
-          BRAND 02
+        <div class="brand-name">
+          House of Xander
         </div>
 
-        <h3>
-          House of Xander
-        </h3>
-
-        <p>
+        <p class="brand-description">
           A lifestyle and community platform built around
           creativity, culture, connection and expression.
         </p>
 
       </div>
 
-    </div>
 
+      <div class="brand">
 
-    <!-- XANDER ODYSSEY -->
+        <div class="brand-number">03</div>
 
-    <div class="brand-card">
-
-      <img
-        src="IMG-20260830-WA0101.jpg"
-        alt="Xander Odyssey">
-
-      <div class="brand-info">
-
-        <div class="brand-index">
-          BRAND 03
+        <div class="brand-name">
+          Xander Odyssey
         </div>
 
-        <h3>
-          Xander Odyssey
-        </h3>
-
-        <p>
+        <p class="brand-description">
           Signature journeys and experiences created to
           turn ordinary moments into memorable stories.
         </p>
@@ -1176,11 +1495,247 @@ footer {
 
     </div>
 
-
-  </div>
-
-</section>
+  </section>
 
 
+  <section class="founder reveal" id="founder">
 
-<!-- ======================================
+    <div class="founder-grid">
+
+      <div>
+
+        <div class="label">06 / The Vision</div>
+
+        <h2 class="big-title">
+          THE MIND<br>
+          BEHIND<br>
+          <span class="gold">THE HOUSE.</span>
+        </h2>
+
+        <div style="margin-top:45px;">
+
+          <div class="founder-name">
+            Okpara Favour<br>
+            Chidalu
+          </div>
+
+          <div class="signature">
+            Founder, Father Xander Creative Solutions
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div>
+
+        <p class="founder-quote">
+          A vision built around creativity,
+          innovation, impact and the refusal
+          to settle for ordinary.
+        </p>
+
+        <p class="copy" style="margin-top:35px;">
+          Father Xander Creative Solutions exists to
+          turn ambitious ideas into experiences that
+          command attention and leave something behind.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section class="cta reveal" id="contact">
+
+    <div class="label">07 / Let's Create</div>
+
+    <h2>
+      HAVE<br>
+      AN IDEA?
+      <br><br>
+      <span class="gold">
+        MAKE IT<br>
+        EXTRAORDINARY.
+      </span>
+    </h2>
+
+    <p style="margin-top:30px; color:#777;">
+      Bring us the vision.
+      We'll help bring it to life.
+    </p>
+
+    <a
+      class="cta-button"
+      href="tel:+2349160092551">
+      START A CONVERSATION →
+    </a>
+
+  </section>
+
+
+  <footer>
+
+    <div class="footer-grid">
+
+      <div>
+
+        <div class="footer-brand">
+          FATHER <span>XANDER</span>
+        </div>
+
+        <p class="copy" style="margin-top:15px;">
+          Creative Solutions
+        </p>
+
+      </div>
+
+
+      <div class="footer-right">
+
+        <a
+          class="phone"
+          href="tel:+2349160092551">
+          +234 916 009 2551
+        </a>
+
+        <div class="socials">
+
+          <a
+            href="https://www.instagram.com/father__xander/"
+            target="_blank"
+            rel="noopener noreferrer">
+            INSTAGRAM
+          </a>
+
+          <a
+            href="https://www.facebook.com/share/1EaE1AXM2h/"
+            target="_blank"
+            rel="noopener noreferrer">
+            FACEBOOK
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <p class="copyright">
+      © 2026 Father Xander Creative Solutions.
+      All Rights Reserved.
+    </p>
+
+  </footer>
+
+
+  <script>
+
+    function toggleMenu() {
+      document
+        .getElementById("menu")
+        .classList.toggle("active");
+    }
+
+
+    const cursor =
+      document.querySelector(".cursor");
+
+    const ring =
+      document.querySelector(".cursor-ring");
+
+
+    if (cursor && ring) {
+
+      document.addEventListener("mousemove", function(e) {
+
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+
+        ring.style.left = e.clientX + "px";
+        ring.style.top = e.clientY + "px";
+
+      });
+
+    }
+
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+
+    const observer =
+      new IntersectionObserver(
+        function(entries) {
+
+          entries.forEach(function(entry) {
+
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.12
+        }
+      );
+
+
+    revealElements.forEach(function(element) {
+      observer.observe(element);
+    });
+
+
+    const imageElements =
+      document.querySelectorAll(".image-reveal");
+
+
+    const imageObserver =
+      new IntersectionObserver(
+        function(entries) {
+
+          entries.forEach(function(entry) {
+
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.15
+        }
+      );
+
+
+    imageElements.forEach(function(element) {
+      imageObserver.observe(element);
+    });
+
+
+    window.addEventListener("load", function() {
+
+      const loader =
+        document.getElementById("loader");
+
+      if (loader) {
+
+        setTimeout(function() {
+          loader.classList.add("hide");
+        }, 1900);
+
+      }
+
+    });
+
+  </script>
+
+</body>
+           </html>
