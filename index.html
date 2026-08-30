@@ -126,21 +126,40 @@
 </head>
 
 <body>
-<nav style="position:fixed; top:0; left:0; width:100%; padding:22px 35px; background:rgba(11,11,11,0.9); z-index:1000; display:flex; align-items:center; justify-content:space-between;">
+<nav style="position:fixed; top:0; right:0; padding:20px; z-index:1000;">
 
-  <div style="font-weight:bold; letter-spacing:2px; color:#d4af37; font-size:18px;">
-    FATHER XANDER
-  </div>
+  <button onclick="toggleMenu()" 
+    style="background:none; border:none; color:#d4af37; font-size:30px; cursor:pointer;">
+    ☰
+  </button>
 
-  <div>
-    <a href="#home" style="color:#f5f5f5; text-decoration:none; margin-left:22px; font-size:14px;">Home</a>
-    <a href="#about" style="color:#f5f5f5; text-decoration:none; margin-left:22px; font-size:14px;">About</a>
-    <a href="#services" style="color:#f5f5f5; text-decoration:none; margin-left:22px; font-size:14px;">Services</a>
-    <a href="#brands" style="color:#f5f5f5; text-decoration:none; margin-left:22px; font-size:14px;">Brands</a>
-    <a href="#contact" style="color:#d4af37; text-decoration:none; margin-left:22px; font-size:14px;">Contact</a>
+  <div id="menu" style="display:none; position:absolute; right:20px; top:65px; background:#111; border:1px solid #333; min-width:180px; padding:15px;">
+
+    <a href="#home" onclick="toggleMenu()" style="display:block; color:#f5f5f5; text-decoration:none; padding:10px;">Home</a>
+
+    <a href="#about" onclick="toggleMenu()" style="display:block; color:#f5f5f5; text-decoration:none; padding:10px;">About</a>
+
+    <a href="#services" onclick="toggleMenu()" style="display:block; color:#f5f5f5; text-decoration:none; padding:10px;">Services</a>
+
+    <a href="#brands" onclick="toggleMenu()" style="display:block; color:#f5f5f5; text-decoration:none; padding:10px;">Brands</a>
+
+    <a href="#contact" onclick="toggleMenu()" style="display:block; color:#d4af37; text-decoration:none; padding:10px;">Contact</a>
+
   </div>
 
 </nav>
+
+<script>
+function toggleMenu() {
+  var menu = document.getElementById("menu");
+
+  if (menu.style.display === "none") {
+    menu.style.display = "block";
+  } else {
+    menu.style.display = "none";
+  }
+}
+</script>
   <header id="home">
     <div class="hero">
 
