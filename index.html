@@ -496,6 +496,61 @@
     visibility: hidden;
   }
 }
+    .socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.social-button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 17px;
+
+  border: 1px solid #333;
+  background: #0d0d0d;
+  color: #aaa;
+
+  transition: all 0.3s ease;
+}
+
+.social-button:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+  background: #151515;
+  transform: translateY(-4px);
+}
+
+.social-icon {
+  color: var(--gold);
+  font-size: 19px;
+}
+
+.social-name {
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.social-arrow {
+  color: var(--gold);
+  transition: transform 0.3s ease;
+}
+
+.social-button:hover .social-arrow {
+  transform: translate(4px, -4px);
+}
+
+@media (max-width: 800px) {
+  .socials {
+    flex-direction: column;
+  }
+
+  .social-button {
+    width: 100%;
+  }
+}
   </style>
 
 </head>
