@@ -125,6 +125,16 @@
       color: #d4af37;
       text-decoration: none;
     }
+      .reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
   </style>
 </head>
 
@@ -411,6 +421,22 @@ function toggleMenu() {
     </p>
 
   </footer>
+<script>
+  const revealElements = document.querySelectorAll("section");
 
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("reveal", "show");
+      }
+    });
+  }, {
+    threshold: 0.15
+  });
+
+  revealElements.forEach((section) => {
+    revealObserver.observe(section);
+  });
+</script>
 </body>
 </html>
