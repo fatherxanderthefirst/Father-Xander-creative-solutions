@@ -1515,87 +1515,97 @@
 
 <!-- FOOTER -->
 
-<footer>
+footer {
+  padding: 65px 7vw 25px;
+  border-top: 1px solid var(--line);
+}
 
-  <div class="footer-grid">
+.footer-simple {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
 
-    <div>
+.footer-brand {
+  font-size: 34px;
+  font-weight: bold;
+}
 
-      <div class="footer-logo">
-        FATHER <span>XANDER</span>
-      </div>
+.footer-brand span {
+  color: var(--gold);
+}
 
-      <div class="section-number" style="margin-top:8px;">
-        CREATIVE SOLUTIONS
-      </div>
+.footer-brand small {
+  display: block;
+  margin-top: 5px;
 
-    </div>
+  color: #555;
+  font-size: 9px;
+  font-weight: normal;
+  letter-spacing: 3px;
+}
 
+.footer-contact {
+  text-align: right;
+}
 
-    <div class="footer-links">
+.footer-contact > a {
+  color: #ddd;
+  font-size: 18px;
+}
 
-      <a href="#home">HOME</a>
-      <a href="#about">ABOUT</a>
-      <a href="#services">CAPABILITIES</a>
-      <a href="#experiences">EXPERIENCES</a>
-      <a href="#brands">BRANDS</a>
-      <a href="#founder">FOUNDER</a>
-      <a href="#contact">CONTACT</a>
+.socials {
+  display: flex;
+  justify-content: flex-end;
+  gap: 25px;
+  margin-top: 18px;
+}
 
-    </div>
+.socials a {
+  color: #777;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
 
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
 
-    <div>
+  margin-top: 55px;
+  padding-top: 20px;
 
-      <div class="section-number">
-        START SOMETHING
-      </div>
+  border-top: 1px solid var(--line);
 
-      <a
-        href="tel:+2349160092551"
-        class="phone"
-      >
-        +234 916 009 2551
-      </a>
+  color: #444;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
 
-      <div class="socials">
+@media (max-width: 800px) {
 
-        <a
-          href="https://www.instagram.com/father__xander/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          INSTAGRAM
-        </a>
+  .footer-simple {
+    flex-direction: column;
+  }
 
-        <a
-          href="https://www.facebook.com/share/1EaE1AXM2h/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          FACEBOOK
-        </a>
+  .footer-contact {
+    text-align: left;
+  }
 
-      </div>
+  .socials {
+    justify-content: flex-start;
+  }
 
-    </div>
+  .footer-bottom {
+    display: block;
+    line-height: 2;
+  }
 
-  </div>
+  .footer-bottom span {
+    display: block;
+  }
 
-
-  <div class="footer-bottom">
-
-    <span>
-      © 2026 Father Xander Creative Solutions
-    </span>
-
-    <span>
-      CREATE • INSPIRE • ELEVATE
-    </span>
-
-  </div>
-
-</footer>
+}
 <script>
 
   function toggleMenu() {
