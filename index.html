@@ -1,999 +1,1186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Father Xander Creative Solutions</title>
-
-  <style>
-
-    /* =========================
-       GLOBAL
-    ========================= */
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background: #0b0b0b;
-      color: #f5f5f5;
-      line-height: 1.6;
-    }
-
-    .gold {
-      color: #d4af37;
-    }
-
-    .tag {
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      font-size: 13px;
-      margin-bottom: 20px;
-      opacity: 0.7;
-    }
-
-
-    /* =========================
-       NAVIGATION
-    ========================= */
-
-    .nav {
-      position: fixed;
-      top: 0;
-      right: 0;
-      padding: 20px;
-      z-index: 1000;
-    }
-
-    .menu-button {
-      background: none;
-      border: none;
-      color: #d4af37;
-      font-size: 30px;
-      cursor: pointer;
-    }
-
-    .menu {
-      display: none;
-      position: absolute;
-      right: 20px;
-      top: 65px;
-      min-width: 190px;
-      padding: 15px;
-      background: #111;
-      border: 1px solid #333;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    }
-
-    .menu a {
-      display: block;
-      color: #f5f5f5;
-      text-decoration: none;
-      padding: 10px;
-      transition: 0.3s;
-    }
-
-    .menu a:hover {
-      color: #d4af37;
-    }
-
-    .menu .contact-link {
-      color: #d4af37;
-    }
-
-
-    /* =========================
-       HERO
-    ========================= */
-
-    header {
-      min-height: 90vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 100px 20px 50px;
-      background: linear-gradient(135deg, #0b0b0b, #191919);
-    }
-
-    .hero {
-      max-width: 850px;
-    }
-
-    .hero-logo {
-      width: 180px;
-      max-width: 70%;
-      margin-bottom: 25px;
-    }
-
-    h1 {
-      font-size: clamp(45px, 9vw, 90px);
-      line-height: 0.95;
-      margin-bottom: 25px;
-    }
-
-    .hero p {
-      font-size: 18px;
-      max-width: 650px;
-      margin: auto;
-      opacity: 0.8;
-    }
-
-    .hero-button {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 14px 28px;
-      border: 1px solid #d4af37;
-      color: #d4af37;
-      text-decoration: none;
-      letter-spacing: 2px;
-      font-size: 13px;
-      transition: 0.3s;
-    }
-
-    .hero-button:hover {
-      background: #d4af37;
-      color: #0b0b0b;
-    }
-
-
-    /* =========================
-       SECTIONS
-    ========================= */
-
-    section {
-      padding: 80px 20px;
-      max-width: 1100px;
-      margin: auto;
-      scroll-margin-top: 80px;
-    }
-
-    h2 {
-      font-size: 38px;
-      line-height: 1.1;
-      margin-bottom: 20px;
-    }
-
-    .intro {
-      max-width: 750px;
-      opacity: 0.8;
-    }
-
-    .spaced {
-      margin-top: 20px;
-    }
-
-
-    /* =========================
-       PHILOSOPHY
-    ========================= */
-
-    .philosophy {
-      max-width: none;
-      text-align: center;
-      background: #111;
-    }
-
-    .philosophy-text {
-      max-width: 900px;
-      margin: auto;
-      font-size: clamp(35px, 7vw, 65px);
-      line-height: 1.05;
-    }
-
-
-    /* =========================
-       FOUNDER
-    ========================= */
-
-    .founder-name {
-      color: #d4af37;
-      font-size: 28px;
-      margin-bottom: 8px;
-    }
-
-
-    /* =========================
-       CARDS
-    ========================= */
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-      margin-top: 35px;
-    }
-
-    .card {
-      border: 1px solid #333;
-      background: #111;
-      overflow: hidden;
-      transition: 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-      border-color: #d4af37;
-    }
-
-    .card-content {
-      padding: 28px 25px;
-    }
-
-    .card h3 {
-      color: #d4af37;
-      margin-bottom: 10px;
-      font-size: 22px;
-    }
-
-
-    /* =========================
-       IMAGE SYSTEM
-    ========================= */
-
-    .card-image {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    /* 4 × 3 images */
-
-    .events-image,
-    .creative-image {
-      aspect-ratio: 4 / 3;
-      object-fit: contain;
-      background: #0b0b0b;
-    }
-
-    /* 3 × 4 image */
-
-    .exploration-image {
-      aspect-ratio: 3 / 4;
-      object-fit: contain;
-      background: #0b0b0b;
-    }
-
-    /* 4 × 4 images */
-
-    .house-image,
-    .odyssey-image,
-    .wild-heart-image {
-      aspect-ratio: 1 / 1;
-      object-fit: contain;
-      background: #0b0b0b;
-    }
-
-
-    /* =========================
-       CTA
-    ========================= */
-
-    .cta {
-      max-width: none;
-      text-align: center;
-    }
-
-
-    /* =========================
-       FOOTER
-    ========================= */
-
-    footer {
-      text-align: center;
-      padding: 70px 20px 50px;
-      border-top: 1px solid #333;
-      scroll-margin-top: 80px;
-    }
-
-    footer a {
-      color: #d4af37;
-      text-decoration: none;
-    }
-
-    .social-links {
-      margin-top: 25px;
-    }
-
-    .social-links a {
-      margin: 0 10px;
-    }
-
-
-    /* =========================
-       SCROLL ANIMATION
-    ========================= */
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    .reveal.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-
-    /* =========================
-       MOBILE
-    ========================= */
-
-    @media (max-width: 600px) {
-
-      header {
-        min-height: 85vh;
-      }
-
-      .hero-logo {
-        width: 150px;
-      }
-
-      h2 {
-        font-size: 32px;
-      }
-
-      .card-content {
-        padding: 25px 20px;
-      }
-
-    }
-
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Father Xander Creative Solutions</title>
+
+<style>
+
+/* =====================================================
+   FATHER XANDER — CREATIVE HOUSE
+===================================================== */
+
+:root {
+  --black: #070707;
+  --dark: #0d0d0d;
+  --panel: #111111;
+  --gold: #d4af37;
+  --gold-light: #e6ca69;
+  --white: #f5f3ed;
+  --muted: #929292;
+  --line: #292929;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.gold {
+  color: var(--gold);
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+.nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 25px;
+  z-index: 9999;
+}
+
+.menu-button {
+  width: 52px;
+  height: 52px;
+  border: 1px solid rgba(212,175,55,0.45);
+  background: rgba(7,7,7,0.82);
+  backdrop-filter: blur(10px);
+  color: var(--gold);
+  font-size: 24px;
+  cursor: pointer;
+  transition: 0.35s ease;
+}
+
+.menu-button:hover {
+  background: var(--gold);
+  color: var(--black);
+}
+
+.menu {
+  position: absolute;
+  top: 88px;
+  right: 25px;
+  width: 220px;
+  padding: 12px;
+  background: rgba(15,15,15,0.97);
+  border: 1px solid var(--line);
+  box-shadow: 0 25px 70px rgba(0,0,0,0.7);
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: 0.3s ease;
+}
+
+.menu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.menu a {
+  display: flex;
+  padding: 14px 15px;
+  color: #ccc;
+  font-size: 11px;
+  letter-spacing: 3px;
+  transition: 0.3s;
+}
+
+.menu a:hover {
+  color: var(--gold);
+  padding-left: 22px;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 100px 25px;
+
+  background:
+    radial-gradient(
+      circle at 50% 40%,
+      rgba(212,175,55,0.07),
+      transparent 28%
+    ),
+    linear-gradient(
+      145deg,
+      #050505,
+      #151515 50%,
+      #060606
+    );
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 30px;
+  border: 1px solid rgba(255,255,255,0.035);
+  pointer-events: none;
+}
+
+.hero-content {
+  max-width: 1050px;
+  position: relative;
+  z-index: 2;
+}
+
+.logo {
+  width: 165px;
+  max-width: 60%;
+  margin-bottom: 35px;
+}
+
+.eyebrow {
+  color: #888;
+  font-size: 11px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+
+.hero h1 {
+  font-size: clamp(52px, 11vw, 120px);
+  line-height: 0.86;
+  letter-spacing: -5px;
+  font-weight: 800;
+  margin-bottom: 35px;
+}
+
+.hero-description {
+  max-width: 690px;
+  margin: auto;
+  color: #999;
+  font-size: 17px;
+}
+
+.hero-button {
+  display: inline-block;
+  margin-top: 42px;
+  padding: 16px 34px;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 4px;
+  transition: 0.35s ease;
+}
+
+.hero-button:hover {
+  background: var(--gold);
+  color: var(--black);
+}
+
+
+/* =====================================================
+   SCROLL INDICATOR
+===================================================== */
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #555;
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+
+/* =====================================================
+   GENERAL
+===================================================== */
+
+section {
+  max-width: 1200px;
+  margin: auto;
+  padding: 125px 30px;
+  scroll-margin-top: 80px;
+}
+
+.label {
+  color: #666;
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+}
+
+.title {
+  font-size: clamp(42px, 7vw, 82px);
+  line-height: 0.92;
+  letter-spacing: -3px;
+  margin-bottom: 35px;
+}
+
+.copy {
+  max-width: 760px;
+  color: #999;
+  font-size: 17px;
+}
+
+.copy + .copy {
+  margin-top: 20px;
+}
+
+
+/* =====================================================
+   INTRO
+===================================================== */
+
+.intro-section {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: end;
+}
+
+.intro-statement {
+  font-size: clamp(25px, 4vw, 43px);
+  line-height: 1.1;
+  color: #ddd;
+}
+
+.intro-statement span {
+  color: var(--gold);
+}
+
+
+/* =====================================================
+   BIG STATEMENT
+===================================================== */
+
+.statement {
+  max-width: none;
+  padding: 150px 30px;
+  background:
+    linear-gradient(
+      135deg,
+      #111,
+      #080808
+    );
+  text-align: center;
+}
+
+.statement-inner {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.statement h2 {
+  font-size: clamp(43px, 8vw, 95px);
+  line-height: 0.9;
+  letter-spacing: -4px;
+}
+
+
+/* =====================================================
+   SERVICES
+===================================================== */
+
+.services-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 30px;
+}
+
+.services-header .copy {
+  max-width: 430px;
+}
+
+.services-grid {
+  margin-top: 70px;
+  border-top: 1px solid var(--line);
+}
+
+.service {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr;
+  gap: 25px;
+  align-items: center;
+  padding: 30px 5px;
+  border-bottom: 1px solid var(--line);
+  transition: 0.35s ease;
+}
+
+.service:hover {
+  padding-left: 18px;
+  padding-right: 18px;
+  background: #101010;
+}
+
+.service-number {
+  color: #555;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.service h3 {
+  color: var(--gold);
+  font-size: 21px;
+}
+
+.service p {
+  color: #777;
+  font-size: 14px;
+}
+
+
+/* =====================================================
+   EXPERIENCES
+===================================================== */
+
+.experience-intro {
+  max-width: 700px;
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 65px;
+}
+
+.experience-card {
+  position: relative;
+  overflow: hidden;
+  background: #0e0e0e;
+  border: 1px solid var(--line);
+}
+
+.experience-card.wide {
+  grid-column: span 2;
+}
+
+.experience-card img {
+  width: 100%;
+  display: block;
+  background: #080808;
+  transition: transform 0.8s ease;
+}
+
+.experience-card:hover img {
+  transform: scale(1.025);
+}
+
+.events-img,
+.creative-img {
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+}
+
+.exploration-img {
+  aspect-ratio: 3 / 4;
+  object-fit: contain;
+}
+
+.experience-info {
+  padding: 27px;
+  background: #101010;
+}
+
+.experience-info h3 {
+  color: var(--gold);
+  font-size: 23px;
+  margin-bottom: 7px;
+}
+
+.experience-info p {
+  color: #777;
+  font-size: 14px;
+}
+
+
+/* =====================================================
+   BRANDS
+===================================================== */
+
+.brands-header {
+  max-width: 750px;
+}
+
+.brand-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 65px;
+}
+
+.brand-card {
+  background: #101010;
+  border: 1px solid var(--line);
+  overflow: hidden;
+  transition: 0.4s ease;
+}
+
+.brand-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(212,175,55,0.6);
+}
+
+.brand-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  display: block;
+  background: #080808;
+  transition: transform 0.8s ease;
+}
+
+.brand-card:hover img {
+  transform: scale(1.025);
+}
+
+.brand-info {
+  padding: 28px;
+}
+
+.brand-index {
+  color: #555;
+  font-size: 10px;
+  letter-spacing: 3px;
+  margin-bottom: 14px;
+}
+
+.brand-info h3 {
+  color: var(--gold);
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.brand-info p {
+  color: #777;
+  font-size: 14px;
+}
+
+
+/* =====================================================
+   FOUNDER
+===================================================== */
+
+.founder-section {
+  border-top: 1px solid var(--line);
+}
+
+.founder-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.founder-name {
+  font-size: clamp(32px, 5vw, 58px);
+  line-height: 0.98;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+.founder-mark {
+  border-left: 1px solid var(--gold);
+  padding-left: 35px;
+  color: #777;
+  font-size: 16px;
+}
+
+
+/* =====================================================
+   CTA
+===================================================== */
+
+.cta {
+  max-width: none;
+  padding: 170px 30px;
+  text-align: center;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(212,175,55,0.08),
+      transparent 35%
+    ),
+    #0d0d0d;
+}
+
+.cta h2 {
+  max-width: 1050px;
+  margin: auto;
+  font-size: clamp(43px, 8vw, 95px);
+  line-height: 0.9;
+  letter-spacing: -4px;
+}
+
+.cta p {
+  max-width: 600px;
+  margin: 30px auto 0;
+  color: #777;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+  padding: 70px 30px;
+  text-align: center;
+  border-top: 1px solid var(--line);
+}
+
+.contact-number {
+  display: inline-block;
+  color: var(--gold);
+  font-size: 21px;
+  margin-top: 8px;
+}
+
+.socials {
+  margin-top: 25px;
+}
+
+.socials a {
+  color: #888;
+  margin: 0 13px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+.socials a:hover {
+  color: var(--gold);
+}
+
+.copyright {
+  color: #444;
+  font-size: 11px;
+  margin-top: 35px;
+}
+
+
+/* =====================================================
+   REVEAL ANIMATION
+===================================================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 800px) {
+
+  .nav {
+    padding: 18px;
+  }
+
+  .menu {
+    right: 18px;
+  }
+
+  section {
+    padding: 90px 20px;
+  }
+
+  .hero {
+    padding: 100px 20px;
+  }
+
+  .hero::before {
+    inset: 15px;
+  }
+
+  .hero h1 {
+    letter-spacing: -3px;
+  }
+
+  .intro-grid,
+  .founder-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .services-header {
+    display: block;
+  }
+
+  .services-header .copy {
+    margin-top: 25px;
+  }
+
+  .service {
+    grid-template-columns: 45px 1fr;
+  }
+
+  .service p {
+    grid-column: 2;
+    margin-top: -15px;
+  }
+
+  .experience-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-card.wide {
+    grid-column: span 1;
+  }
+
+  .brand-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .statement,
+  .cta {
+    padding: 110px 20px;
+  }
+
+}
+
+</style>
 </head>
 
 
 <body>
 
 
-  <!-- =========================
-       NAVIGATION
-  ========================= -->
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
 
-  <nav class="nav">
+<nav class="nav">
 
-    <button
-      class="menu-button"
-      onclick="toggleMenu()"
-      aria-label="Open navigation menu">
-      ☰
-    </button>
+  <button
+    class="menu-button"
+    onclick="toggleMenu()"
+    aria-label="Open navigation">
+    ☰
+  </button>
 
-    <div class="menu" id="menu">
+  <div class="menu" id="menu">
 
-      <a href="#home" onclick="toggleMenu()">
-        Home
-      </a>
+    <a href="#home" onclick="toggleMenu()">HOME</a>
+    <a href="#about" onclick="toggleMenu()">ABOUT</a>
+    <a href="#services" onclick="toggleMenu()">SERVICES</a>
+    <a href="#experiences" onclick="toggleMenu()">EXPERIENCES</a>
+    <a href="#brands" onclick="toggleMenu()">BRANDS</a>
+    <a href="#founder" onclick="toggleMenu()">FOUNDER</a>
+    <a href="#contact" onclick="toggleMenu()">CONTACT</a>
 
-      <a href="#about" onclick="toggleMenu()">
-        About
-      </a>
+  </div>
 
-      <a href="#services" onclick="toggleMenu()">
-        Services
-      </a>
+</nav>
 
-      <a href="#experiences" onclick="toggleMenu()">
-        Experiences
-      </a>
 
-      <a href="#brands" onclick="toggleMenu()">
-        Brands
-      </a>
 
-      <a href="#contact" onclick="toggleMenu()" class="contact-link">
-        Contact
-      </a>
+<!-- =====================================================
+     HERO
+===================================================== -->
 
+<header class="hero" id="home">
+
+  <div class="hero-content">
+
+    <img
+      class="logo"
+      src="IMG-20260830-WA0083.jpg"
+      alt="Father Xander Creative Solutions Logo">
+
+    <div class="eyebrow">
+      Create • Inspire • Elevate
     </div>
 
-  </nav>
+    <h1>
+      WE CREATE<br>
+      <span class="gold">THE EXTRAORDINARY.</span>
+    </h1>
+
+    <p class="hero-description">
+      Father Xander Creative Solutions is a multidisciplinary
+      creative company creating brands, experiences, events
+      and ventures that stand apart.
+    </p>
+
+    <a
+      class="hero-button"
+      href="#experiences">
+      ENTER OUR WORLD
+    </a>
+
+  </div>
+
+  <div class="scroll-indicator">
+    Scroll to explore
+  </div>
+
+</header>
 
 
 
-  <!-- =========================
-       HERO
-  ========================= -->
+<!-- =====================================================
+     ABOUT
+===================================================== -->
 
-  <header id="home">
+<section class="intro-section" id="about">
 
-    <div class="hero">
+  <div class="intro-grid">
 
-      <img
-        class="hero-logo"
-        src="IMG-20260830-WA0083.jpg"
-        alt="Father Xander Creative Solutions Logo">
+    <div>
 
-      <div class="tag">
-        Create • Inspire • Elevate
+      <div class="label">
+        The House
       </div>
 
-      <h1>
-        WHERE IDEAS<br>
-        <span class="gold">
-          BECOME EXPERIENCES.
-        </span>
-      </h1>
+      <h2 class="title">
+        MORE THAN<br>
+        <span class="gold">CREATIVE.</span>
+      </h2>
 
-      <p>
-        Father Xander Creative Solutions creates brands, experiences,
-        events and creative ventures built to stand apart and leave
-        a lasting impression.
+    </div>
+
+
+    <div>
+
+      <p class="intro-statement">
+        We create <span>out-of-the-ordinary events</span>,
+        innovative concepts, high-class services and
+        experiences designed to leave an impact.
       </p>
 
-      <a
-        href="#services"
-        class="hero-button">
-        EXPLORE OUR WORK
-      </a>
+      <p class="copy" style="margin-top:30px;">
+        From the first spark of an idea to the final execution,
+        Father Xander Creative Solutions brings creativity,
+        strategy and precision together.
+      </p>
 
     </div>
 
-  </header>
+  </div>
+
+</section>
 
 
 
-  <!-- =========================
-       ABOUT
-  ========================= -->
+<!-- =====================================================
+     STATEMENT
+===================================================== -->
 
-  <section id="about">
+<section class="statement">
 
-    <div class="tag">
-      Who We Are
-    </div>
+  <div class="statement-inner">
 
-    <h2>
-      CREATIVITY WITHOUT<br>
-      <span class="gold">
-        LIMITS.
-      </span>
-    </h2>
-
-    <p class="intro">
-      Father Xander Creative Solutions is a multidisciplinary creative
-      company built around one simple belief: the ordinary is never enough.
-    </p>
-
-    <p class="intro spaced">
-      From out-of-the-ordinary events and immersive experiences to
-      branding, design, talent management, excursions and creative
-      ventures, we transform ideas into concepts that command attention
-      and create lasting impact.
-    </p>
-
-    <p class="intro spaced">
-      We combine innovation, creativity and high-class execution to
-      deliver experiences and services that are not simply seen,
-      but remembered.
-    </p>
-
-  </section>
-
-
-
-  <!-- =========================
-       PHILOSOPHY
-  ========================= -->
-
-  <section class="philosophy">
-
-    <div class="philosophy-text">
-
-      WE DON'T FOLLOW THE ORDINARY.<br>
-
-      <span class="gold">
-        WE CREATE THE EXTRAORDINARY.
-      </span>
-
-    </div>
-
-    <p class="intro spaced" style="margin-left:auto; margin-right:auto;">
-      Creation. Innovation. Impact. High-class execution.
-    </p>
-
-  </section>
-
-
-
-  <!-- =========================
-       FOUNDER
-  ========================= -->
-
-  <section>
-
-    <div class="tag">
-      The Visionary
+    <div class="label">
+      Our Philosophy
     </div>
 
     <h2>
-      Founder
-    </h2>
+      WE DON'T FOLLOW<br>
+      THE ORDINARY.
 
-    <h3 class="founder-name">
-      Okpara Favour Chidalu (SMNITP)
-    </h3>
+      <br><br>
 
-    <p class="intro">
-      Founder, Father Xander Creative Solutions
-    </p>
-
-  </section>
-
-
-
-  <!-- =========================
-       SERVICES
-  ========================= -->
-
-  <section id="services">
-
-    <div class="tag">
-      Our Expertise
-    </div>
-
-    <h2>
-      BUILT TO CREATE<br>
       <span class="gold">
+        WE CREATE<br>
         THE EXTRAORDINARY.
       </span>
     </h2>
 
-    <p class="intro">
-      From the first idea to the final execution, we bring creativity,
-      strategy and precision together to create work that stands apart.
-    </p>
+  </div>
+
+</section>
 
 
-    <div class="cards">
 
+<!-- =====================================================
+     SERVICES
+===================================================== -->
 
-      <div class="card">
-        <div class="card-content">
-          <h3>Events & Experiences</h3>
-          <p>
-            Event planning, organisation, production, promotion,
-            branding and experiential activations.
-          </p>
-        </div>
+<section id="services">
+
+  <div class="services-header">
+
+    <div>
+
+      <div class="label">
+        Capabilities
       </div>
 
-
-      <div class="card">
-        <div class="card-content">
-          <h3>Branding & Design</h3>
-          <p>
-            Brand development, identity design, graphic design,
-            logo design, creative direction and marketing materials.
-          </p>
-        </div>
-      </div>
-
-
-      <div class="card">
-        <div class="card-content">
-          <h3>Excursions & Adventures</h3>
-          <p>
-            Curating excursions, outdoor adventures, travel experiences
-            and memorable journeys.
-          </p>
-        </div>
-      </div>
-
-
-      <div class="card">
-        <div class="card-content">
-          <h3>Talent Management</h3>
-          <p>
-            Talent development, representation, coordination and
-            opportunities for emerging creatives and entertainers.
-          </p>
-        </div>
-      </div>
-
-
-      <div class="card">
-        <div class="card-content">
-          <h3>Marketing & Publicity</h3>
-          <p>
-            Digital marketing, social media campaigns, publicity,
-            promotional content and campaign strategy.
-          </p>
-        </div>
-      </div>
-
-
-      <div class="card">
-        <div class="card-content">
-          <h3>Creative Strategy</h3>
-          <p>
-            Concept development, creative consultancy, project management
-            and turning ideas into memorable experiences.
-          </p>
-        </div>
-      </div>
-
-
-      <div class="card">
-        <div class="card-content">
-          <h3>Partnerships & Sponsorships</h3>
-          <p>
-            Strategic partnerships, collaborations and sponsorship
-            opportunities for creative projects and experiences.
-          </p>
-        </div>
-      </div>
-
-
-      <div class="card">
-        <div class="card-content">
-          <h3>Entertainment & Lifestyle</h3>
-          <p>
-            Entertainment, lifestyle and youth-focused experiences
-            with distinctive creative identities.
-          </p>
-        </div>
-      </div>
-
+      <h2 class="title">
+        WHAT WE<br>
+        <span class="gold">CREATE.</span>
+      </h2>
 
     </div>
 
-  </section>
+    <p class="copy">
+      Ideas are only the beginning. We bring the strategy,
+      creativity and execution required to turn them into
+      something exceptional.
+    </p>
+
+  </div>
+
+
+  <div class="services-grid">
+
+
+    <div class="service">
+      <div class="service-number">01</div>
+      <h3>Events & Experiences</h3>
+      <p>
+        Concepts, planning, production, promotion,
+        branding and experiential activations.
+      </p>
+    </div>
+
+
+    <div class="service">
+      <div class="service-number">02</div>
+      <h3>Branding & Design</h3>
+      <p>
+        Brand identity, graphic design, logo development,
+        creative direction and visual communication.
+      </p>
+    </div>
+
+
+    <div class="service">
+      <div class="service-number">03</div>
+      <h3>Excursions & Adventures</h3>
+      <p>
+        Curated adventures, outdoor experiences,
+        excursions and memorable journeys.
+      </p>
+    </div>
+
+
+    <div class="service">
+      <div class="service-number">04</div>
+      <h3>Talent Management</h3>
+      <p>
+        Talent development, coordination, representation
+        and opportunities for emerging creatives.
+      </p>
+    </div>
+
+
+    <div class="service">
+      <div class="service-number">05</div>
+      <h3>Marketing & Publicity</h3>
+      <p>
+        Campaign strategy, digital marketing, social media,
+        publicity and promotional content.
+      </p>
+    </div>
+
+
+    <div class="service">
+      <div class="service-number">06</div>
+      <h3>Creative Strategy</h3>
+      <p>
+        Concept development, consultancy, project direction
+        and creative problem solving.
+      </p>
+    </div>
+
+
+    <div class="service">
+      <div class="service-number">07</div>
+      <h3>Partnerships & Sponsorships</h3>
+      <p>
+        Strategic collaborations, partnerships and sponsorship
+        opportunities for creative ventures.
+      </p>
+    </div>
+
+
+    <div class="service">
+      <div class="service-number">08</div>
+      <h3>Entertainment & Lifestyle</h3>
+      <p>
+        Distinctive entertainment, lifestyle and youth-focused
+        experiences with strong identities.
+      </p>
+    </div>
+
+
+  </div>
+
+</section>
 
 
 
-  <!-- =========================
-       SELECTED EXPERIENCES
-  ========================= -->
+<!-- =====================================================
+     EXPERIENCES
+===================================================== -->
 
-  <section id="experiences">
+<section id="experiences">
 
-    <div class="tag">
+  <div class="experience-intro">
+
+    <div class="label">
       Selected Experiences
     </div>
 
-    <h2>
+    <h2 class="title">
       BEYOND THE<br>
-      <span class="gold">
-        ORDINARY.
-      </span>
+      <span class="gold">ORDINARY.</span>
     </h2>
 
-    <p class="intro">
-      From bold events to unforgettable adventures, we create
-      experiences designed to be felt, remembered and talked about.
+    <p class="copy">
+      We don't just organise events. We build moments,
+      environments and experiences people remember.
     </p>
 
-
-    <div class="cards">
-
-
-      <!-- EVENTS -->
-
-      <div class="card">
-
-        <img
-          class="card-image events-image"
-          src="IMG-20260705-WA0307(1).jpg"
-          alt="Father Xander event experience">
-
-        <div class="card-content">
-
-          <h3>
-            Events
-          </h3>
-
-          <p>
-            Distinctive events built around powerful concepts,
-            creative direction and unforgettable experiences.
-          </p>
-
-        </div>
-
-      </div>
+  </div>
 
 
-      <!-- EXPLORATION -->
+  <div class="experience-grid">
 
-      <div class="card">
 
-        <img
-          class="card-image exploration-image"
-          src="IMG-20260824-WA0510.jpg"
-          alt="Father Xander excursion experience">
+    <!-- EVENTS -->
 
-        <div class="card-content">
+    <div class="experience-card wide">
 
-          <h3>
-            Exploration
-          </h3>
+      <img
+        class="events-img"
+        src="IMG-20260705-WA0307(1).jpg"
+        alt="Father Xander Events">
 
-          <p>
-            Curated adventures and excursions that take people
-            beyond the familiar and into something memorable.
-          </p>
+      <div class="experience-info">
 
-        </div>
+        <h3>
+          Events
+        </h3>
+
+        <p>
+          Bold concepts transformed into distinctive,
+          high-impact experiences.
+        </p>
 
       </div>
-
-
-      <!-- CREATIVE PROJECTS -->
-
-      <div class="card">
-
-        <img
-          class="card-image creative-image"
-          src="IMG-20260830-WA0053.jpg"
-          alt="Father Xander creative project">
-
-        <div class="card-content">
-
-          <h3>
-            Creative Projects
-          </h3>
-
-          <p>
-            Original concepts, campaigns, brands and creative
-            ventures brought from imagination into reality.
-          </p>
-
-        </div>
-
-      </div>
-
 
     </div>
 
-  </section>
 
+    <!-- EXPLORATION -->
 
+    <div class="experience-card">
 
-  <!-- =========================
-       OUR BRANDS
-  ========================= -->
+      <img
+        class="exploration-img"
+        src="IMG-20260824-WA0510.jpg"
+        alt="Father Xander Exploration">
 
-  <section id="brands">
+      <div class="experience-info">
 
-    <div class="tag">
-      Our Ecosystem
+        <h3>
+          Exploration
+        </h3>
+
+        <p>
+          Adventures that take people beyond the familiar.
+        </p>
+
+      </div>
+
     </div>
 
-    <h2>
-      OUR BRANDS
+
+    <!-- CREATIVE PROJECTS -->
+
+    <div class="experience-card">
+
+      <img
+        class="creative-img"
+        src="IMG-20260830-WA0053.jpg"
+        alt="Father Xander Creative Projects">
+
+      <div class="experience-info">
+
+        <h3>
+          Creative Projects
+        </h3>
+
+        <p>
+          Original ideas, campaigns and ventures brought
+          into reality.
+        </p>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     BRANDS
+===================================================== -->
+
+<section id="brands">
+
+  <div class="brands-header">
+
+    <div class="label">
+      The Ecosystem
+    </div>
+
+    <h2 class="title">
+      OUR<br>
+      <span class="gold">BRANDS.</span>
     </h2>
 
-    <p class="intro">
-      A growing ecosystem of brands and ventures created under
-      the Father Xander vision.
+    <p class="copy">
+      Distinct ventures. One creative vision.
+      Each brand exists to create something different.
     </p>
 
+  </div>
 
-    <div class="cards">
+
+  <div class="brand-grid">
 
 
-      <!-- WILD HEART EXPLORERS -->
+    <!-- WILD HEART -->
 
-      <div class="card">
+    <div class="brand-card">
 
-        <img
-          class="card-image wild-heart-image"
-          src="IMG-20260830-WA0100.jpg"
-          alt="Wild Heart Explorers">
+      <img
+        src="IMG-20260830-WA0100.jpg"
+        alt="Wild Heart Explorers">
 
-        <div class="card-content">
+      <div class="brand-info">
 
-          <h3>
-            Wild Heart Explorers
-          </h3>
-
-          <p>
-            Adventure, exploration and curated experiences designed
-            for people who want to step outside the ordinary.
-          </p>
-
+        <div class="brand-index">
+          BRAND 01
         </div>
+
+        <h3>
+          Wild Heart Explorers
+        </h3>
+
+        <p>
+          Adventure, exploration and curated experiences
+          designed to take people beyond the ordinary.
+        </p>
 
       </div>
 
+    </div>
 
-      <!-- HOUSE OF XANDER -->
 
-      <div class="card">
+    <!-- HOUSE OF XANDER -->
 
-        <img
-          class="card-image house-image"
-          src="IMG-20260830-WA0102.jpg"
-          alt="House of Xander">
+    <div class="brand-card">
 
-        <div class="card-content">
+      <img
+        src="IMG-20260830-WA0102.jpg"
+        alt="House of Xander">
 
-          <h3>
-            House of Xander
-          </h3>
+      <div class="brand-info">
 
-          <p>
-            A lifestyle and community platform built around creativity,
-            culture, connection and expression.
-          </p>
-
+        <div class="brand-index">
+          BRAND 02
         </div>
+
+        <h3>
+          House of Xander
+        </h3>
+
+        <p>
+          A lifestyle and community platform built around
+          creativity, culture, connection and expression.
+        </p>
 
       </div>
 
+    </div>
 
-      <!-- XANDER ODYSSEY -->
 
-      <div class="card">
+    <!-- XANDER ODYSSEY -->
 
-        <img
-          class="card-image odyssey-image"
-          src="IMG-20260830-WA0101.jpg"
-          alt="Xander Odyssey">
+    <div class="brand-card">
 
-        <div class="card-content">
+      <img
+        src="IMG-20260830-WA0101.jpg"
+        alt="Xander Odyssey">
 
-          <h3>
-            Xander Odyssey
-          </h3>
+      <div class="brand-info">
 
-          <p>
-            Signature journeys and experiences created to turn
-            ordinary moments into memorable stories.
-          </p>
-
+        <div class="brand-index">
+          BRAND 03
         </div>
+
+        <h3>
+          Xander Odyssey
+        </h3>
+
+        <p>
+          Signature journeys and experiences created to
+          turn ordinary moments into memorable stories.
+        </p>
 
       </div>
 
-
-    </div>
-
-  </section>
-
-
-
-  <!-- =========================
-       CALL TO ACTION
-  ========================= -->
-
-  <section class="cta">
-
-    <div class="tag">
-      Let's Create
-    </div>
-
-    <h2 style="font-size:clamp(35px, 7vw, 65px);">
-
-      HAVE AN IDEA?<br>
-
-      <span class="gold">
-        LET'S CREATE THE EXTRAORDINARY.
-      </span>
-
-    </h2>
-
-    <p class="intro spaced" style="margin-left:auto; margin-right:auto;">
-      Let's turn your vision into something worth remembering.
-    </p>
-
-  </section>
-
-
-
-  <!-- =========================
-       CONTACT
-  ========================= -->
-
-  <footer id="contact">
-
-    <div class="tag">
-      Contact
-    </div>
-
-    <p>
-      <a href="tel:+2349160092551">
-        +234 916 009 2551
-      </a>
-    </p>
-
-
-    <div class="social-links">
-
-      <a
-        href="https://www.instagram.com/father__xander/"
-        target="_blank"
-        rel="noopener noreferrer">
-        Instagram
-      </a>
-
-      <a
-        href="https://www.facebook.com/share/1EaE1AXM2h/"
-        target="_blank"
-        rel="noopener noreferrer">
-        Facebook
-      </a>
-
     </div>
 
 
-    <p style="margin-top:30px; opacity:0.6;">
-      © 2026 Father Xander Creative Solutions.
-      All Rights Reserved.
-    </p>
+  </div>
 
-  </footer>
+</section>
 
 
 
-  <!-- =========================
-       JAVASCRIPT
-  ========================= -->
-
-  <script>
-
-    /* MENU */
-
-    function toggleMenu() {
-
-      const menu = document.getElementById("menu");
-
-      if (menu.style.display === "block") {
-
-        menu.style.display = "none";
-
-      } else {
-
-        menu.style.display = "block";
-
-      }
-
-    }
-
-
-    /* SCROLL REVEAL */
-
-    const revealElements =
-      document.querySelectorAll("section");
-
-    const revealObserver =
-      new IntersectionObserver((entries) => {
-
-        entries.forEach((entry) => {
-
-          if (entry.isIntersecting) {
-
-            entry.target.classList.add("show");
-
-          }
-
-        });
-
-      }, {
-        threshold: 0.15
-      });
-
-
-    revealElements.forEach((section) => {
-
-      section.classList.add("reveal");
-
-      revealObserver.observe(section);
-
-    });
-
-  </script>
-
-
-</body>
-  </html>
+<!-- ======================================
