@@ -1515,102 +1515,70 @@
 
 <!-- FOOTER -->
 
-footer {
-  padding: 65px 7vw 25px;
-  border-top: 1px solid var(--line);
-}
+<footer>
 
-.footer-simple {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 40px;
-}
+  <div class="footer-simple">
 
-.footer-brand {
-  font-size: 34px;
-  font-weight: bold;
-}
+    <div class="footer-brand">
 
-.footer-brand span {
-  color: var(--gold);
-}
+      FATHER <span>XANDER</span>
 
-.footer-brand small {
-  display: block;
-  margin-top: 5px;
+      <small>
+        CREATIVE SOLUTIONS
+      </small>
 
-  color: #555;
-  font-size: 9px;
-  font-weight: normal;
-  letter-spacing: 3px;
-}
+    </div>
 
-.footer-contact {
-  text-align: right;
-}
 
-.footer-contact > a {
-  color: #ddd;
-  font-size: 18px;
-}
+    <div class="footer-contact">
 
-.socials {
-  display: flex;
-  justify-content: flex-end;
-  gap: 25px;
-  margin-top: 18px;
-}
+      <a href="tel:+2349160092551">
+        +234 916 009 2551
+      </a>
 
-.socials a {
-  color: #777;
-  font-size: 10px;
-  letter-spacing: 2px;
-}
+      <div class="socials">
 
-.footer-bottom {
-  display: flex;
-  justify-content: space-between;
+        <a
+          href="https://www.instagram.com/father__xander/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          INSTAGRAM
+        </a>
 
-  margin-top: 55px;
-  padding-top: 20px;
+        <a
+          href="https://www.facebook.com/share/1EaE1AXM2h/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          FACEBOOK
+        </a>
 
-  border-top: 1px solid var(--line);
+      </div>
 
-  color: #444;
-  font-size: 9px;
-  letter-spacing: 2px;
-}
+    </div>
 
-@media (max-width: 800px) {
+  </div>
 
-  .footer-simple {
-    flex-direction: column;
-  }
 
-  .footer-contact {
-    text-align: left;
-  }
+  <div class="footer-bottom">
 
-  .socials {
-    justify-content: flex-start;
-  }
+    © 2026 Father Xander Creative Solutions.
+    All Rights Reserved.
 
-  .footer-bottom {
-    display: block;
-    line-height: 2;
-  }
+  </div>
 
-  .footer-bottom span {
-    display: block;
-  }
+</footer>
 
-}
+
 <script>
 
   function toggleMenu() {
+
     const menu = document.getElementById("menu");
+
     menu.classList.toggle("active");
+
   }
 
 
@@ -1618,7 +1586,9 @@ footer {
 
     link.addEventListener("click", function() {
 
-      document.getElementById("menu").classList.remove("active");
+      document
+        .getElementById("menu")
+        .classList.remove("active");
 
     });
 
