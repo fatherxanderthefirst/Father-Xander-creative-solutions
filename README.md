@@ -1,2 +1,173 @@
-# Father-Xander-creative-solutions
-Official website of Father Xander Creative Solutions
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Father Xander Creative Solutions</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b0b0b;
+      color: #f5f5f5;
+      line-height: 1.6;
+    }
+
+    header {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, #0b0b0b, #191919);
+    }
+
+    .hero {
+      max-width: 800px;
+    }
+
+    .tag {
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-size: 13px;
+      margin-bottom: 20px;
+      opacity: 0.7;
+    }
+
+    h1 {
+      font-size: clamp(45px, 9vw, 90px);
+      line-height: 0.95;
+      margin-bottom: 25px;
+    }
+
+    .gold {
+      color: #d4af37;
+    }
+
+    .hero p {
+      font-size: 18px;
+      max-width: 600px;
+      margin: auto;
+      opacity: 0.8;
+    }
+
+    section {
+      padding: 80px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    h2 {
+      font-size: 38px;
+      margin-bottom: 20px;
+    }
+
+    .intro {
+      max-width: 750px;
+      opacity: 0.8;
+    }
+
+    .brands {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 35px;
+    }
+
+    .brand {
+      border: 1px solid #333;
+      padding: 35px 25px;
+      background: #111;
+      transition: 0.3s;
+    }
+
+    .brand:hover {
+      transform: translateY(-5px);
+      border-color: #d4af37;
+    }
+
+    .brand h3 {
+      color: #d4af37;
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      border-top: 1px solid #222;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="hero">
+      <div class="tag">Create • Inspire • Elevate</div>
+
+      <h1>
+        FATHER XANDER<br>
+        <span class="gold">CREATIVE SOLUTIONS</span>
+      </h1>
+
+      <p>
+        Building brands, experiences and ideas that leave a mark.
+      </p>
+    </div>
+  </header>
+
+  <section>
+    <h2>Who We Are</h2>
+
+    <p class="intro">
+      Father Xander Creative Solutions is a creative company focused on
+      developing experiences, brands, events and ideas designed to connect,
+      inspire and create lasting memories.
+    </p>
+  </section>
+
+  <section>
+    <h2>Our Brands</h2>
+
+    <div class="brands">
+
+      <div class="brand">
+        <h3>Wild Heart Explorers</h3>
+        <p>
+          Adventure, excursions and unforgettable experiences.
+        </p>
+      </div>
+
+      <div class="brand">
+        <h3>House of Xander</h3>
+        <p>
+          A creative lifestyle and community platform.
+        </p>
+      </div>
+
+      <div class="brand">
+        <h3>Xander Odyssey</h3>
+        <p>
+          Signature journeys, experiences and adventures.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Father Xander Creative Solutions. All Rights Reserved.
+  </footer>
+
+</body>
+</html>
