@@ -1533,3 +1533,253 @@ footer{
   </div>
 
         </section>
+<!-- MANIFESTO -->
+
+<section class="manifesto reveal">
+
+  <div class="section-number">
+    05 / THE MANIFESTO
+  </div>
+
+  <h2>
+    WE DON'T FOLLOW<br>
+    THE <span class="gold">ORDINARY.</span><br>
+    WE CREATE THE<br>
+    <span class="outline">EXTRAORDINARY.</span>
+  </h2>
+
+</section>
+
+
+<!-- FOUNDER -->
+
+<section id="founder" class="reveal">
+
+  <div class="founder-grid">
+
+    <div>
+
+      <div class="section-number">
+        06 / THE VISION
+      </div>
+
+      <h2 class="big-title">
+        THE MIND<br>
+        BEHIND<br>
+        <span class="gold">THE HOUSE.</span>
+      </h2>
+
+    </div>
+
+
+    <div>
+
+      <div class="section-number">
+        FOUNDER
+      </div>
+
+      <h3 class="founder-name">
+        Okpara Favour<br>
+        Chidalu
+      </h3>
+
+      <div class="section-number" style="margin-top:18px">
+        FOUNDER / FATHER XANDER CREATIVE SOLUTIONS
+      </div>
+
+      <div class="quote">
+        “The ordinary is never enough.”
+      </div>
+
+      <p class="copy">
+        Built around creativity, innovation, impact and
+        high-class execution, Father Xander Creative
+        Solutions exists to transform ambitious ideas
+        into experiences, ventures and identities that
+        stand apart.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="contact reveal" id="contact">
+
+  <div>
+
+    <div class="section-number">
+      07 / LET'S CREATE
+    </div>
+
+    <h2>
+      HAVE AN IDEA?<br>
+      <span class="gold">
+        LET'S CREATE<br>
+        THE EXTRAORDINARY.
+      </span>
+    </h2>
+
+    <p class="copy" style="margin-top:35px">
+      Bring us the vision.
+      We'll help bring it to life.
+    </p>
+
+    <a
+      href="tel:+2349160092551"
+      class="button"
+    >
+      START A CONVERSATION →
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+  <div class="footer-grid">
+
+    <div>
+
+      <div class="footer-logo">
+        FATHER <span>XANDER</span>
+      </div>
+
+      <div class="section-number" style="margin-top:8px">
+        CREATIVE SOLUTIONS
+      </div>
+
+    </div>
+
+
+    <div class="footer-links">
+
+      <a href="#home">HOME</a>
+      <a href="#about">ABOUT</a>
+      <a href="#services">CAPABILITIES</a>
+      <a href="#experiences">EXPERIENCES</a>
+      <a href="#brands">BRANDS</a>
+      <a href="#founder">FOUNDER</a>
+      <a href="#contact">CONTACT</a>
+
+    </div>
+
+
+    <div>
+
+      <div class="section-number">
+        START SOMETHING
+      </div>
+
+      <a
+        href="tel:+2349160092551"
+        class="phone"
+      >
+        +234 916 009 2551
+      </a>
+
+      <div class="socials">
+
+        <a
+          href="https://www.instagram.com/father__xander/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          INSTAGRAM
+        </a>
+
+        <a
+          href="https://www.facebook.com/share/1EaE1AXM2h/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          FACEBOOK
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="footer-bottom">
+
+    <span>
+      © 2026 Father Xander Creative Solutions
+    </span>
+
+    <span>
+      CREATE • INSPIRE • ELEVATE
+    </span>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+function toggleMenu(){
+
+  const menu = document.getElementById("menu");
+
+  menu.classList.toggle("active");
+
+}
+
+
+document.querySelectorAll(".menu a").forEach(function(link){
+
+  link.addEventListener("click",function(){
+
+    document.getElementById("menu").classList.remove("active");
+
+  });
+
+});
+
+
+const observer = new IntersectionObserver(
+
+  function(entries){
+
+    entries.forEach(function(entry){
+
+      if(entry.isIntersecting){
+
+        entry.target.classList.add("visible");
+
+        observer.unobserve(entry.target);
+
+      }
+
+    });
+
+  },
+
+  {
+    threshold:0.08
+  }
+
+);
+
+
+document.querySelectorAll(".reveal").forEach(function(element){
+
+  observer.observe(element);
+
+});
+
+</script>
+
+</body>
+  </html>
