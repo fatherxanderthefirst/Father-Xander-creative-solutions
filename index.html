@@ -739,6 +739,39 @@
 .service p {
   line-height: 1.7;
 }
+    /* HERO POLISH */
+
+.hero-inner {
+  position: relative;
+}
+
+.hero .logo {
+  transition: transform 0.6s ease;
+}
+
+.hero .logo:hover {
+  transform: scale(1.04);
+}
+
+.hero h1 {
+  font-size: clamp(48px, 10vw, 125px);
+  line-height: 0.9;
+  letter-spacing: -4px;
+  margin-top: 25px;
+}
+
+.hero h1 .gold {
+  display: inline-block;
+  transition: transform 0.5s ease;
+}
+
+.hero:hover h1 .gold {
+  transform: translateX(8px);
+}
+
+.hero .eyebrow {
+  margin-top: 25px;
+}
   </style>
 
 </head>
