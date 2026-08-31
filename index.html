@@ -658,6 +658,45 @@
 .contact-actions .button:hover {
   transform: translateY(-4px);
 }
+    /* EXPERIENCE INTERACTIONS */
+
+.experience {
+  transition: transform 0.4s ease;
+}
+
+.experience-image {
+  overflow: hidden;
+}
+
+.experience-image img {
+  width: 100%;
+  display: block;
+  transition: transform 0.7s ease;
+}
+
+.experience:hover {
+  transform: translateY(-5px);
+}
+
+.experience:hover .experience-image img {
+  transform: scale(1.04);
+}
+
+.experience-details {
+  transition: padding-left 0.4s ease;
+}
+
+.experience:hover .experience-details {
+  padding-left: 8px;
+}
+
+.experience-details h3 {
+  transition: color 0.4s ease;
+}
+
+.experience:hover .experience-details h3 {
+  color: var(--gold);
+}
   </style>
 
 </head>
